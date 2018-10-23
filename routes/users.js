@@ -9,10 +9,6 @@ module.exports = (router) => {
     ctx.body = 'this is a users response!'
   })
 
-  router.get('/bar', function (ctx, next) {
-    ctx.body = 'this is a users/bar response'
-  })
-
   router.get('/getAll', async (ctx, next) => {
     let allUser = await user.getAllUsers()
     ctx.body = allUser
