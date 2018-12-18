@@ -25,7 +25,8 @@ module.exports = (router) => {
       if (insertRes.affectedRows) {
         result = {
           status: 1,
-          insert: true
+          insert: true,
+          msg: '已经将用户落库了'
         }
       } else {
         result = {
@@ -37,10 +38,10 @@ module.exports = (router) => {
       // 已经存在这个用户
       result = {
         status: 1,
-        hasUser: true
+        hasUser: true,
+        msg: '这个用户已经存在了'
       }
     }
-
     ctx.body = result
   })
 
