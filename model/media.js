@@ -1,5 +1,10 @@
 // 为多媒体的处理模块
+// 数据库模块
 const db = require('../data/db');
+// 文件操作模块
+const fs = require('fs');
+// 路径操作模块
+const path = require('path')
 
 class Media {
   constructor(params) {}
@@ -73,6 +78,13 @@ class Media {
     }
   }
 
+  // 查找已知年份和月份是否存在事件
+  async seekDateEvent (periodDate) {
+    // 根据传入的年份-月份查找有没有事件
+    let sql_selPeriodEvent = await db.query(`select * from event where start_date like '${periodDate}%' or end_date like '${periodDate}%';`)
+    return sql_selPeriodEvent
+  }
+
   // 查询媒体
   async getMedia (eventId) {
     let sql_getMedia = await db.query(`select * from event_media where event_id = '${eventId}';`)
@@ -91,6 +103,35 @@ class Media {
       }
     }
     return mediaRes
+  }
+
+  // 删除媒体方法
+  async deleteMedia (delImgsList) {
+    return new Promise((res, rej) => {
+      let sql_sec_imgs = ''
+      delImgsList.forEach(async (val,ind) => {
+        // 同步删除图片文件
+        fs.unlinkSync(path.resolve(__dirname, `../public/uploads/${val}`))
+        if (delImgsList.length-1 == ind) {
+          // 如果当前已经走到了最后一个图片，执行sql语句
+          sql_sec_imgs += "'" + val + "'"
+          let sql_removeMedia = await db.query(`DELETE FROM event_media WHERE media_url IN (${sql_sec_imgs})`)
+          if (sql_removeMedia.affectedRows > 0) {
+            res({
+              status: 1,
+              message: '文件删除成功'
+            })
+          } else {
+            rej({
+              status: 0,
+              message: '文件删除失败'
+            })
+          }
+        } else {
+          sql_sec_imgs += "'" + val + "',"
+        }
+      })
+    })
   }
 
   // 修改事件信息
@@ -116,11 +157,24 @@ class Media {
   }
 
   // 修改已有事件和媒体
-  async updateEventAndMedia (eventData) {
+  async updateEventAndMedia (eventData, eventId) {
     // 更新事件信息
     let eventRes = await this.updateEvent(eventData)
-    console.log(eventRes)
+    // 更新媒体信息
+    let mediaRes = await this.saveMedia(eventData, eventId)
+    if (eventRes.affectedRows && mediaRes.status) {
+      return {
+        status: 1,
+        message: '事件和媒体都更新完毕'
+      }
+    } else {
+      return {
+        status: 0,
+        message: '事件和媒体都更新失败'
+      }
+    }
   }
+
 }
 
 module.exports = Media

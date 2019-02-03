@@ -4,13 +4,15 @@ let config = {
     user: 'root',
     password: '123456a',
     database: 'timer',
-    host: '127.0.0.1'
+    host: '127.0.0.1',
+    timezone: '08:00'
   },
   pro: {
     user: 'root',
     password: '123456a',
     database: 'timer',
-    host: '127.0.0.1'
+    host: '127.0.0.1',
+    timezone: '08:00'
   }
 }
 

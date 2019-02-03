@@ -5,7 +5,8 @@ const client = new Client({
     user: setting.user,
     password: setting.password,
     database: setting.database,
-    host: setting.host
+    host: setting.host,
+    timezone: setting.timezone
   }
 });
 
