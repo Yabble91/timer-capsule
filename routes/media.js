@@ -1,5 +1,5 @@
 const multer = require('koa-multer');
-const Media = require('../model/Media');
+const Media = require('../model/media');
 const path = require('path')
 // 配置上传路径
 const storage = multer.diskStorage({

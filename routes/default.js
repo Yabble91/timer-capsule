@@ -7,24 +7,6 @@ module.exports = (router) => {
     })
   })
 
-  router.get('/getUnionId', async (ctx, next) => {
-    ctx.body = 'koa2 string'
-  })
-
-  router.get('/json', async (ctx, next) => {
-    ctx.body = {
-      title: 'koa2 json'
-    }
-  })
-
-  router.get('/test', async (ctx, next) => {
-    ctx.response.body = '<h2>test page</h2>'
-  })
-
-  router.get('/sendData', async (ctx, next) => {
-    ctx.body = 123
-  })
-
   router.post('/onLogin', async (ctx, next) => {
     const { code } = ctx.request.body
     const appSecret = '1d90b57d62084529144049d761ba193b'
