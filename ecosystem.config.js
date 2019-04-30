@@ -19,7 +19,7 @@ module.exports = {
       "repo": "https://github.com/Yubble/timer-capsule.git",
       "path": "/www/website/timerCapsule",
       "ssh_options": "StrictHostKeyChecking=no",
-      "post-deploy":"yarn install && pm2 reload ecosystem.config.js --env production",
+      "post-deploy":"yarn install",
       "env": {
         "NODE_ENV": "production"
       }
