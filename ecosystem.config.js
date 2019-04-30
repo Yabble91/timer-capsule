@@ -1,7 +1,7 @@
 module.exports = {
   "app": [
     {
-      "name": "timer-capsule",
+      "name": "timer",
       "script": "app.js",
       "env": {
         "COMMON_VARIABLE": "true"
