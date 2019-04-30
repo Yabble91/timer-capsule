@@ -2,7 +2,7 @@ module.exports = {
   "app": [
     {
       "name": "timer-capsule",
-      "script": "/www/website/timerCapsule/current/bin/www",
+      "script": "app.js",
       "env": {
         "COMMON_VARIABLE": "true"
       },
@@ -19,6 +19,7 @@ module.exports = {
       "repo": "https://github.com/Yubble/timer-capsule.git",
       "path": "/www/website/timerCapsule",
       "ssh_options": "StrictHostKeyChecking=no",
+      "post-deploy":"npm install && npm run build && pm2 startOrRestart ecosystem.json --env production",
       "env": {
         "NODE_ENV": "production"
       }
