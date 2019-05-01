@@ -2,7 +2,7 @@ module.exports = {
   "app": [
     {
       "name": "timer",
-      "script": "app.js",
+      "script": "./bin/www",
       "env": {
         "COMMON_VARIABLE": "true"
       },
