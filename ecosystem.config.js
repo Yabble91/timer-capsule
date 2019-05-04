@@ -30,10 +30,10 @@ module.exports = {
 }
 
 // # Setup deployment at remote location
-// pm2 deploy production setup
+// pm2 deploy aliTimerCapsule setup
 
 // # Update remote version
-// pm2 deploy production update
+// pm2 deploy aliTimerCapsule update
 
 // # Revert to -1 deployment
 // pm2 deploy production revert 1
