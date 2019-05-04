@@ -3,6 +3,8 @@ module.exports = {
     {
       "name": "timer",
       "script": "./bin/www",
+      "output": "/www/log_bin/timerCapsule/out.log",
+      "error": "/www/log_bin/timerCapsule/err.log",
       "env": {
         "COMMON_VARIABLE": "true"
       },
