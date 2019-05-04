@@ -9,9 +9,9 @@ let config = {
   },
   pro: {
     user: 'root',
-    password: '123456a',
+    password: 'YubbleAndRonnieo@(0909)',
     database: 'timer',
-    host: '127.0.0.1',
+    host: '47.93.15.178',
     timezone: '08:00'
   }
 }
