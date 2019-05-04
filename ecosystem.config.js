@@ -26,3 +26,15 @@ module.exports = {
     }
   }
 }
+
+// # Setup deployment at remote location
+// pm2 deploy production setup
+
+// # Update remote version
+// pm2 deploy production update
+
+// # Revert to -1 deployment
+// pm2 deploy production revert 1
+
+// # execute a command on remote servers
+// pm2 deploy production exec "pm2 reload all"
